@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>A-Frame Animation Tag</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-box color="yellow" position="0 1 -5" rotation="0 0 0"
+      animation="property:rotation; to:0 0 360; dur:3000; loop:2;"></a-box>
+    <a-sphere position="-2 1 -5" color="red"
+      animation="property:position; to:4 1 -5; dur:5000; loop:true; dir:alternate;"></a-sphere>
+    <a-cylinder position="2 1 -5" color="blue"
+      animation="property:scale; to:2 2 2; dur:5000; loop:true; dir:alternate;"></a-cylinder>
+  </a-scene>
+</body>
+
+</html>
