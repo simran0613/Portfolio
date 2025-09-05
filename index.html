@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simran • Portfolio</title>
+  <meta name="description" content="Personal portfolio of Simran — skills, experience, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <style>
+    :root{
+      --bg:#0b1020; --card:#111735; --muted:#8ea0ff; --text:#eaf0ff; --accent:#7c8cff; --chip:#1a2250;
+      --grid-gap:1.2rem; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--text); background:radial-gradient(1000px 500px at 80% -10%, #1f2a66 0, transparent 60%), radial-gradient(800px 500px at 10% -20%, #24307a 0, transparent 60%), var(--bg);}    
+    a{color:var(--muted); text-decoration:none; transition:all .3s ease;}
+    a:hover{opacity:.9; color:var(--accent);}
+    img{max-width:100%; display:block;}
+    .container{max-width:1100px; margin:0 auto; padding:1rem 1.2rem 4rem}
+    header{position:sticky; top:0; backdrop-filter:blur(8px); background:linear-gradient(180deg, rgba(11,16,32,.9), rgba(11,16,32,.4)); z-index:50; border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem 0}
+    .nav .logo{display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.5px}
+    .nav .logo .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(45deg,#8aa1ff,#70e1ff)}
+    .nav a{padding:.5rem .8rem; border-radius:10px}
+    .nav .links{display:flex; gap:.25rem; flex-wrap:wrap}
+    .nav .links a:hover{background:rgba(255,255,255,.06)}
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:var(--grid-gap); align-items:center; padding:2.2rem 0 1rem}
+    .tag{display:inline-flex; align-items:center; gap:.5rem; background:var(--chip); padding:.35rem .7rem; border-radius:999px; font-size:.85rem; color:var(--muted); border:1px solid rgba(255,255,255,.06)}
+    .title{font-size:clamp(2rem, 4vw, 3rem); line-height:1.15; margin:.8rem 0}
+    .subtitle{color:#cdd6ff; opacity:.9}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:1.2rem; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .cta{display:flex; gap:.6rem; margin-top:1.2rem}
+    .btn{display:inline-block; padding:.8rem 1rem; border-radius:12px; font-weight:600; border:1px solid rgba(255,255,255,.12); transition:all .3s ease;}
+    .btn.primary{background:linear-gradient(45deg,#7c8cff,#6be3ff); color:#0b1020}
+    .btn.ghost{background:transparent}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.2);}
+    section{margin-top:2.4rem}
+    .section-title{font-size:1.2rem; letter-spacing:.8px; color:var(--muted); margin:0 0 .9rem}
+    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:var(--grid-gap)}
+    .card{grid-column:span 4; background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .4rem; font-size:1.05rem}
+    .card p{margin:0; color:#d7deffcc}
+    .pill{display:inline-block; background:var(--chip); padding:.25rem .55rem; margin:.2rem .25rem 0 0; border-radius:999px; font-size:.8rem; color:#c8d1ff}
+    .skill{margin:.6rem 0}
+    .bar{height:10px; background:#0e1430; border:1px solid rgba(255,255,255,.08); border-radius:999px; overflow:hidden}
+    .bar > span{display:block; height:100%; background:linear-gradient(90deg,#7c8cff,#6be3ff)}
+    .skill small{display:block; color:#c9d2ff; opacity:.9; margin-bottom:.25rem}
+    .timeline{position:relative; padding-left:1rem}
+    .timeline:before{content:""; position:absolute; left:6px; top:0; bottom:0; width:2px; background:linear-gradient(#4150b8,#6be3ff)}
+    .t-item{position:relative; padding-left:1rem; margin:.9rem 0}
+    .t-item:before{content:""; position:absolute; left:-2px; top:.35rem; width:10px; height:10px; border-radius:50%; background:#6be3ff}
+    form{display:grid; gap:.7rem}
+    input,textarea{width:100%; padding:.8rem; border-radius:10px; border:1px solid rgba(255,255,255,.14); background:#0c1436; color:var(--text)}
+    textarea{min-height:120px; resize:vertical}
+    .note{color:#c9d2ffaa; font-size:.9rem}
+    footer{margin-top:2.8rem; padding-top:1.6rem; border-top:1px solid rgba(255,255,255,.08); color:#c9d2ffbb; text-align:center}
+    @media (max-width: 920px){.hero{grid-template-columns:1fr;} .card{grid-column:span 6}}
+    @media (max-width: 640px){.card{grid-column:span 12} .nav .links{display:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo"><span class="dot"></span> <span>Simran</span></div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#resume" title="Download resume">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div>
+        <span class="tag">👋 Hi, I’m Simran — CSE Undergrad</span>
+        <h1 class="title">I build neat, student-friendly tools and experiment with AR/VR & web.</h1>
+        <p class="subtitle">Currently learning Python & C++, dabbling in Unity. I enjoy turning ideas into clean, accessible interfaces.</p>
+        <div class="cta">
+          <a class="btn ghost" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="note">Quick stats</div>
+        <div class="grid" style="margin-top:.6rem">
+          <div class="card" style="grid-column:span 6">
+            <h3>💡 Interests</h3>
+            <p>Web dev, AR/VR, productivity tools, UI/UX.</p>
+          </div>
+          <div class="card" style="grid-column:span 6">
+            <h3>🎯 Looking for</h3>
+            <p>Internships, hackathons, collabs, freelance gigs.</p>
+          </div>
+          <div class="card" style="grid-column:span 12">
+            <h3>📍 Based in</h3>
+            <p>Patiala, Punjab • Open to remote</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title">ABOUT</h2>
+      <div class="grid">
+        <article class="card" style="grid-column:span 7">
+          <h3>Hey! I’m Simran</h3>
+          <p>I’m a B.Tech CSE student who loves building human-friendly software. I learn fast, write clean HTML/CSS, and I’m leveling up in JavaScript, Python, and C++.</p>
+          <p>When I’m not coding, I write, journal, and explore design systems. I believe good tools feel like magic ✨.</p>
+        </article>
+        <aside class="card" style="grid-column:span 5">
+          <h3>Highlights</h3>
+          <div>
+            <span class="pill">Unity Bootcamp (NIELIT)</span>
+            <span class="pill">Content Writing Intern</span>
+            <span class="pill">AR/VR Curious</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-title">SKILLS</h2>
+      <div class="grid">
+        <div class="card" style="grid-column:span 6">
+          <h3>Frontend</h3>
+          <div class="skill"><small>HTML &amp; Semantic Layout</small><div class="bar"><span style="width:90%"></span></div></div>
+          <div class="skill"><small>CSS / Grid / Flexbox</small><div class="bar"><span style="width:85%"></span></div></div>
+          <div class="skill"><small>Responsive Design</small><div class="bar"><span style="width:80%"></span></div></div>
+        </div>
+        <div class="card" style="grid-column:span 6">
+          <h3>Programming</h3>
+          <div class="skill"><small>Python</small><div class="bar"><span style="width:40%"></span></div></div>
+          <div class="skill"><small>C++</small><div class="bar"><span style="width:65%"></span></div></div>
+          <div class="skill"><small>Unity (Basics)</small><div class="bar"><span style="width:20%"></span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="section-title">EXPERIENCE & EDUCATION</h2>
+      <div class="grid">
+        <div class="card" style="grid-column:span 12">
+          <div class="timeline">
+            <div class="t-item">
+              <h3>Content Writing Intern <span class="pill">2025</span></h3>
+              <p>Produced clear, student-centric articles and microcopy; collaborated with product & design.</p>
+            </div>
+            <div class="t-item">
+              <h3>B.Tech — CSE <span class="pill">2024–Present</span></h3>
+              <p>Exploring data structures, OS, and human-computer interaction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title">PROJECTS</h2>
+
+      <!-- First Project -->
+      <div class="card" style="grid-column:span 12">
+        <h3>🌳 My First A-Frame Park</h3>
+        <p>A simple AR/VR scene with basic 3D shapes.</p>
+        <div style="height:400px;">
+          <a-scene embedded style="width:100%; height:100%;">
+            <a-box color="yellow" position="0 1 -5"></a-box>
+            <a-sphere color="red" position="2 1 -5"></a-sphere>
+            <a-cylinder color="blue" position="-2 1 -5"></a-cylinder>
+            <a-plane color="green" position="0 0 -4" rotation="-90 0 0" width="4" height="4"></a-plane>
+            <a-sky color="#ECECEC"></a-sky>
+          </a-scene>
+        </div>
+      </div>
+
+      <!-- Second Project -->
+      <div class="card" style="grid-column:span 12; margin-top:1.5rem;">
+        <h3>🎨 Scaled A-Frame Shapes</h3>
+        <p>A variation with rotated and scaled 3D objects.</p>
+        <div style="height:400px;">
+          <a-scene embedded style="width:100%; height:100%;">
+            <a-box color="yellow" position="-2 1 -5" rotation="-45 45 45" scale="2 2 2"></a-box>
+            <a-sphere color="red" position="2 1 -5" scale="2 2 2"></a-sphere>
+            <a-cylinder color="blue" position="0 1 -5" scale="2 2 2"></a-cylinder>
+            <a-plane color="green" position="0 0 -4" rotation="-90 0 0" width="4" height="4"></a-plane>
+            <a-sky color="#ECECEC"></a-sky>
+          </a-scene>
+        </div>
+      </div>
+
+      <!-- Third Project -->
+      <div class="card" style="grid-column:span 12; margin-top:1.5rem;">
+        <h3>🎬 A-Frame Animation (Box & Sphere)</h3>
+        <p>Objects animated with rotation and position changes.</p>
+        <div style="height:400px;">
+          <a-scene embedded style="width:100%; height:100%;">
+            <a-box color="yellow" position="0 1 -5" rotation="0 0 0"
+              animation="property:rotation; to:0 0 360; dur:3000; loop:2;"></a-box>
+            <a-sphere position="-2 1 -5" color="red"
+              animation="property:position; to:4 1 -5; dur:5000; loop:true; dir:alternate;"></a-sphere>
+          </a-scene>
+        </div>
+      </div>
+
+      <!-- Fourth Project -->
+      <div class="card" style="grid-column:span 12; margin-top:1.5rem;">
+        <h3>🌀 A-Frame Animation (Box, Sphere & Cylinder)</h3>
+        <p>Adding a cylinder with scaling animation for extra effect.</p>
+        <div style="height:400px;">
+          <a-scene embedded style="width:100%; height:100%;">
+            <a-box color="yellow" position="0 1 -5" rotation="0 0 0"
+              animation="property:rotation; to:0 0 360; dur:3000; loop:2;"></a-box>
+            <a-sphere position="-2 1 -5" color="red"
+              animation="property:position; to:4 1 -5; dur:5000; loop:true; dir:alternate;"></a-sphere>
+            <a-cylinder position="2 1 -5" color="blue"
+              animation="property:scale; to:2 2 2; dur:5000; loop:true; dir:alternate;"></a-cylinder>
+          </a-scene>
+        </div>
+      </div>
+
+      <!-- Fifth Project -->
+      <div class="card" style="grid-column:span 12; margin-top:1.5rem;">
+        <h3>🌌 A-Frame Task 1</h3>
+        <p>A collection of spheres with different sizes and positions.</p>
+        <div style="height:400px;">
+          <a-scene embedded style="width:100%; height:100%;">
+            <a-sphere position="-2 1 -5" color="blue" radius="1"></a-sphere>
+            <a-sphere position="4 2 -5" color="yellow" radius="1.5"></a-sphere>
+            <a-sphere position="0 1 -8" color="#E8E0DF" radius="0.5"></a-sphere>
+          </a-scene>
+        </div>
+      </div>
+
+            <!-- Sixth Project -->
+      <div class="card" style="grid-column:span 12; margin-top:1.5rem;">
+        <h3>🎥 A-Frame 360° Video Scene</h3>
+        <p>Embedding a 360° video inside an AR/VR environment with a black sky.</p>
+        <div style="height:400px;">
+          <a-scene embedded style="width:100%; height:100%;">
+            <a-sky color="black"></a-sky>
+            <a-video src="https://cdn.glitch.me/6b5538d9-7d58-4cc7-98d7-7e4cb50cbba2/360Video.mp4?v=1735807855708"
+              autoplay="true" height="10" width="15" position="0 1 -20"></a-video>
+          </a-scene>
+        </div>
+      </div>
+
+
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">CONTACT</h2>
+      <div class="grid">
+        <div class="card" style="grid-column:span 6">
+          <h3>Let’s build together</h3>
+          <p>My inbox is open for internships, part-time roles, or fun collabs.</p>
+          <p class="note">Prefer email? <strong>simranjeet0613@gmail.com</strong></p>
+        </div>
+        <div class="card" style="grid-column:span 6">
+          <form action="#" method="post">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <textarea name="message" placeholder="Tell me about your idea…" required></textarea>
+            <button class="btn primary" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume">
+      <div class="card" style="margin-top:1rem">
+        <h3>Résumé</h3>
+        <p>Download a PDF version of my resume <a href="#">here</a>.</p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y">2025</span> Simran • Built using HTML & CSS
+    </footer>
+  </main>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
